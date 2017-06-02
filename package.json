@@ -1,0 +1,28 @@
+{
+  "name": "medibot",
+  "version": "1.0.0",
+  "description": "Chatbot for API-First Hackathon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshaykumarvikram/medibot.git"
+  },
+  "author": "Akshay Kumar Vikram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshaykumarvikram/medibot/issues"
+  },
+  "homepage": "https://github.com/akshaykumarvikram/medibot#readme",
+  "dependencies": {
+    "botbuilder": "^3.8.3",
+    "dotenv-extended": "^2.0.1",
+    "needle": "^1.6.0",
+    "node-uuid": "^1.4.8",
+    "request": "^2.81.0",
+    "restify": "^4.3.0",
+    "url": "^0.11.0"
+  }
+}
