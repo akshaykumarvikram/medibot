@@ -33,7 +33,7 @@ var intents = new builder.IntentDialog({recognizers: [recognizer]});
 intents.matches('pico','/pico');
 intents.matches('getdatafromemr','/EMR');
 intents.matches('isAlergic','/isAlergic');
-intents.matches('caseReport','case_report')
+intents.matches('caseReport','/case_report')
 intents.matches('changeintervention','/change_intervention');
 intents.matches('changecontrol','/change_control');
 intents.matches('current_medication','/current_medication');
@@ -81,10 +81,10 @@ bot.dialog('/change_control',[
 bot.dialog('/isAlergic',[
     function(session,args,next){
         var allergy = builder.EntityRecognizer.findEntity(args.entities,"allergy");
-        if(session.userData.patient_allergies.indexOf(allergy)> -1){
-            session.endDialog('Yes, the patient is allergic to '+allergy);
+        if(session.userData.patient_allergies== allergy){
+            session.endDialog('Yes, the patient is allergic to '+allergy.entity);
         } else {
-            session.endDialog('No, the patient is not allergic to ')
+            session.endDialog('No, the patient is not allergic to '+allergy.entity)
         }
     }
 ]);
@@ -108,16 +108,7 @@ bot.dialog('/case_report',[
     }
 ]);
 
-bot.dialog('/isalergic',[
-    function(session,args,next){
-        var allergy = builder.EntityRecognizer.findEntity(args.entities,"allergy");
-        if(session.userData.patient_allergies.indexOf(allergy)> -1){
-            session.endDialog('Yes, the patient is allergic to '+allergy);
-        } else {
-            session.endDialog('No, the patient is not allergic to ')
-        }
-    }
-]);
+
 
 
 bot.dialog('/pico',[
@@ -269,7 +260,7 @@ bot.dialog('/EMR',[
         session.userData.patient_present_illness = '30 Year old male patient is diagnosed with depression. He would prefer to alternative medicines rather than SSRI. He was complaining of blurred vision for the past 1 month. He finds it so difficult for him to read clearly and is even affecting his driving. He also notes that he has to be getting up to the bathroom frequently, esp. at night. He now routinely gets up to urinate 3-4 times a night. He is not aware of any particular weight loss, but does feel thirsty much of the time.';
         session.userData.patient_history_illness = 'Hypertension';
         session.userData.patient_history_surgery = 'No surgery till date';
-        session.userData.patient_allergies = 'pencillin';
+        session.userData.patient_allergies = 'crocin';
         session.userData.patient_current_medication = '	METOPROLOL 25MG XL TAB Qty: 90 for 90 ACTIVE days Sig: TAKE ONE TABLET MOUTH QDAY Refills: 0 FOR THE HEART';
         session.userData.patient_history_family = 'Diabetes: Father, Sibling, Grandparent';
         session.endDialog('Patient data obtained')
