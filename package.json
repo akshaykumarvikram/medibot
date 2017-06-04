@@ -22,7 +22,9 @@
     "dotenv-extended": "^2.0.1",
     "needle": "^1.6.0",
     "node-uuid": "^1.4.8",
+    "promise": "^7.1.1",
     "request": "^2.81.0",
+    "request-promise": "^4.2.1",
     "restify": "^4.3.0",
     "sync-request": "^4.0.3",
     "url": "^0.11.0"
