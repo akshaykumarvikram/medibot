@@ -57,7 +57,7 @@ bot.dialog('/pico',[
         session.userData.p = session.userData.p.entity;
         session.userData.i = session.userData.i.entity;
         session.userData.c = session.userData.c.entity;
-        if(session.userData.c.indexOf('John')> -1){session.userData.c = "st john's wort"}
+        if(session.userData.c.indexOf('john')> -1){session.userData.c = "st john's wort"}
         session.userData.o = session.userData.o.entity;
         
         session.userData.p_alt = find_alt_term(session.userData.p);
