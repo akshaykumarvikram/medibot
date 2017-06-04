@@ -1,6 +1,32 @@
-require('./connectorSetup.js')();
+//require('./connectorSetup.js')();
+require('dotenv-extended').load();
+var request = require("sync-request")
+var cheerio = require("cheerio")
+var builder = require('botbuilder'),
+    fs = require('fs'),
+    needle = require('needle'),
+    restify = require('restify'),
+    //request = require('request'),
+    url = require('url'),
+    speechService = require('./speech-service.js');
+var connector = new builder.ChatConnector({
+    appId: process.env.MICROSOFT_APP_ID,
+    appPassword: process.env.MICROSOFT_APP_PASSWORD
+});
+
+bot = new builder.UniversalBot(connector);
+
+    // Setup Restify Server
+    var server = restify.createServer();
+    server.listen(process.env.port || 3978, function () {
+        console.log('%s listening to %s', server.name, server.url);
+    });
+    server.post('/api/messages', connector.listen());
+    bot.use(builder.Middleware.dialogVersion({ version: 0.2, resetCommand: /^reset/i }));
+
 var recognizer = new builder.LuisRecognizer(process.env.LUIS_MODEL_URL)
 var intents = new builder.IntentDialog({recognizers: [recognizer]});
+
 
 intents.matches('pico','/pico');
 intents.matches('getdatafromemr','/EMR');
@@ -102,7 +128,30 @@ bot.dialog('/pico',[
         session.endDialog(reply);
     }
 ]);*/
+ //'''''''''''''''''''''''''''''''''''''''''//
+ //        helper functions                //
+//'''''''''''''''''''''''''''''''''''''''//
 
+function find_alt_term(searchterm) {
+    console.log(searchterm)
+    var url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" + encodeURIComponent(searchterm) +"&format=json";
+    
+    
+    var res = request('GET', url);
+    var json = JSON.parse(res.getBody('utf8'))
+   // console.log(json)
+    
+    var esearchresult = json["esearchresult"]
+    var translationstack = esearchresult["translationstack"]
+    for(i=0;i<translationstack.length;i++) {
+        if(translationstack[i]["field"] == "MeSH Terms") {
+            term = translationstack[i]["term"]
+            var splitted_terms = term.split("\"")
+            splitted_terms = splitted_terms.filter(function(entry) { return entry.trim() != ''; });
+            return(splitted_terms[0])
+        }
+    }
+}
 //Creates a backchannel event
 const createEvent = (eventName, value, address) => {
     var msg = new builder.Message().address(address);

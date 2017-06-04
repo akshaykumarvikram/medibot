@@ -144,7 +144,7 @@ bot.dialog('/EMR',[
 
                 readImageText(response, attachment.contentType, function (error, response, body) {
                     session.userData.EMRText = (extractText(body));
-                    LUIS_link = 
+                    LUIS_link = ''
                     
                     
                    
@@ -169,11 +169,12 @@ bot.dialog('/EMR',[
 
 function find_alt_term(searchterm) {
     console.log(searchterm)
-    var url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" + encodeURIComponent(searchterm) +'cmd=correctspelling'+"&format=json";
+    var url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" + encodeURIComponent(searchterm) +"&format=json";
     
     
     var res = request('GET', url);
     var json = JSON.parse(res.getBody('utf8'))
+    console.log(json)
     
     var esearchresult = json["esearchresult"]
     var translationstack = esearchresult["translationstack"]
