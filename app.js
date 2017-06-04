@@ -116,7 +116,7 @@ bot.dialog('/pico',[
       //session.userData.pubmedlink = https://www.ncbi.nlm.nih.gov/pubmed?term=((depressive%20disorder)%20AND%20ssri)%20AND%20(hypericum%20OR%20st%20john%27s%20wort)&cmd=correctspelling;
       session.userData.search_term = '(('+session.userData.p+') AND ('+session.userData.i+') AND ('+session.userData.c+') AND ('+session.userData.o+'))'
       session.userData.pubmedlink = 'https://www.ncbi.nlm.nih.gov/pubmed?term='+encodeURIComponent(session.userData.search_term);
-      
+      session.send(session.userData.pubmedlink)
      var reply = createEvent("changeURL", session.userData.pubmedlink, session.message.address);
         session.endDialog(reply);
     },
