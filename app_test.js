@@ -1,46 +1,46 @@
-require('dotenv-extended').load();
+    require('dotenv-extended').load();
 
-var builder = require('botbuilder'),
-    fs = require('fs'),
-    needle = require('needle'),
-    restify = require('restify'),
-    request = require('request'),
-    url = require('url'),
-    speechService = require('./speech-service.js');
+    var builder = require('botbuilder'),
+        fs = require('fs'),
+        needle = require('needle'),
+        restify = require('restify'),
+        request = require('request'),
+        url = require('url'),
+        speechService = require('./speech-service.js');
 
-// Setup Restify Server
-var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
-    console.log('%s listening to %s', server.name, server.url);
-});
+    // Setup Restify Server
+    var server = restify.createServer();
+    server.listen(process.env.port || process.env.PORT || 3978, function () {
+        console.log('%s listening to %s', server.name, server.url);
+    });
 
-// Create chat bot
-var connector = new builder.ChatConnector({
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
-});
+    // Create chat bot
+    var connector = new builder.ChatConnector({
+        appId: process.env.MICROSOFT_APP_ID,
+        appPassword: process.env.MICROSOFT_APP_PASSWORD
+    });
 
-server.post('/api/messages', connector.listen());
+    server.post('/api/messages', connector.listen());
 
-var bot = new builder.UniversalBot(connector);
+    var bot = new builder.UniversalBot(connector);
 
-bot.dialog('/',[
-    function(session,args,next){
-        if (hasAudioAttachment(session)) {
-        var stream = getAudioStreamFromMessage(session.message);
-        speechService.getTextFromAudioStream(stream)
-            .then(function (text) {
-                session.send(text);
-            })
-            .catch(function (error) {
-                session.send('Oops! Something went wrong. Try again later.');
-                console.error(error);
-            });
-    } else {
-        session.send('Did you upload an audio file? I\'m more of an audible person. Try sending me a wav file');
+    bot.dialog('/',[
+        function(session,args,next){
+            if (hasAudioAttachment(session)) {
+            var stream = getAudioStreamFromMessage(session.message);
+            speechService.getTextFromAudioStream(stream)
+                .then(function (text) {
+                    session.send(text);
+                })
+                .catch(function (error) {
+                    session.send('Oops! Something went wrong. Try again later.');
+                    console.error(error);
+                });
+        } else {
+            session.send('Did you upload an audio file? I\'m more of an audible person. Try sending me a wav file');
+        }
     }
-}
-]);
+    ]);
 
 //=========================================================
 // Utilities
