@@ -55,7 +55,7 @@ bot.dialog('/',intents);
 bot.dialog('/change_intervention',[
     function(session,args,next){
         session.userData.new_i = builder.EntityRecognizer.findEntity(args.entities,"new_intervention");
-        session.userData.i = session.userData.new_i;
+        session.userData.i = session.userData.new_i.entity;
         session.userData.search_term = '(('+session.userData.p+') AND ('+session.userData.i+') AND ('+session.userData.c+') AND ('+session.userData.o+'))'
       session.userData.pubmedlink = 'https://www.ncbi.nlm.nih.gov/pubmed?term='+encodeURIComponent(session.userData.search_term);
       //session.send(session.userData.pubmedlink)
@@ -67,8 +67,8 @@ bot.dialog('/change_intervention',[
 
 bot.dialog('/change_control',[
     function(session,args,next){
-        session.userData.new_i = builder.EntityRecognizer.findEntity(args.entities,"new_control");
-        session.userData.i = session.userData.new_i;
+        session.userData.new_c = builder.EntityRecognizer.findEntity(args.entities,"new_control");
+        session.userData.c = session.userData.new_c.entity;
         session.userData.search_term = '(('+session.userData.p+') AND ('+session.userData.i+') AND ('+session.userData.c+') AND ('+session.userData.o+'))'
       session.userData.pubmedlink = 'https://www.ncbi.nlm.nih.gov/pubmed?term='+encodeURIComponent(session.userData.search_term);
       //session.send(session.userData.pubmedlink)
