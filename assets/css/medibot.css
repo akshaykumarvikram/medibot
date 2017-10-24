@@ -1,0 +1,120 @@
+body {
+	font-family: Roboto;
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+h1 {
+	background: #2980b9;
+	color: white;
+	margin: 0;
+    padding: 10px 20px;
+    
+	text-transform: uppercase;
+	font-size: 24px;
+    font-weight: normal;
+    display: inline-block;
+    width: 7%;
+    height:30px;
+}
+
+input {
+	font-size: 18px;
+	color: #2980b9;
+    background-color: #f7f7f7;
+    position: relative;
+    width: 90%;
+    margin: 0;
+    float: right;
+    top:0;
+    height:50px;
+	padding: 13px 13px 13px 20px;
+    box-sizing: border-box;
+    z-index: 20;
+	border: 3px solid rgba(0,0,0,0);
+}
+li {
+    display: inline;
+    text-decoration-line: none;
+    text-decoration-color: initial;
+    text-decoration-style: initial;
+}
+.search-nav{
+    display: inline; 
+    padding:0
+}
+#BotChatGoesHere {
+    border: 1px solid #333;
+    float: right;
+    height: 750px;
+    
+    width: 410px;
+    background: white;
+    position: absolute;
+    z-index: 20;
+    top: 20%;
+    right: 0%;
+    margin:0 auto;
+  }
+
+#med {
+    position: absolute;
+    z-index: 0;
+    top: 7%;
+    left: 25%;
+    margin:0 auto;
+}
+.flr-wrap{
+    z-index: 10;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+
+.search {
+  width: 100%;
+  position: relative;
+  z-index: 30;
+
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 55px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 58px;
+  height: 55px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 53%;
+  position: absolute;
+  top: 3%;
+  left: 51.5%;
+  transform: translate(-50%, -50%);
+}
