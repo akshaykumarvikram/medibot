@@ -71,7 +71,7 @@
     window['botchatDebug'] = params['debug'] && params['debug'] === "true";
 
     var botConnection = new BotChat.DirectLine({
-        secret: params['s'],
+        secret: params['s']||"DrfgoIWy6LM.cwA.9Us.rs5Tv-kohyXvPqgHmg-jnM6JGHBAwTCdpyUeP1b-SVs",
         token: params['t'],
         domain: params['domain'],
         webSocket: params['webSocket'] && params['webSocket'] === "true" // defaults to true
