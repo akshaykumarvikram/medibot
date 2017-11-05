@@ -10,7 +10,14 @@ one of the most import step in EBM in **searching for evidence**. I,e. Finding t
 
 Unfortunately, this is a very time consuming process. According to a 2014 study, although 76% of the nurse practitioner agree that EBM should be part of their practive, more that 50% them agree that they couldnt apply it effectively because it was a bit difficult and time consuming. 
 
-So, Addressing this problem we have decided to add a layer of AI on to the traditional PubMed website, to automate the processes of finding the appropriate medical terms(MeSH) terms, and building an optimized query. This is how our system works.
+So, Addressing this problem we have decided to add a layer of AI(conversational agent) on to the traditional PubMed website, to automate the processes of finding the appropriate medical terms(MeSH) terms, and building an optimized query.
+
+* The Converstional agent is like siri or cortana with which you can have a conversation in natural language, like you would interact with your assistant.
+* Context based personalized search: Unlike in traditional keyword based search, in our interface each search has an history and context. you would be having a conversation with bot, where it is possible for the bot to ask you additional information to make you search more personalized. 
+* Since, the seach is AI assisted, you could find the same literature upto 7X time faster.
+* Voice integrated: It has a built-in speech-to-text commands, so you could you search for literature using voice commands.
+
+This is how our system works. With our system, we could effectively reduce the time by over 70% in most of the cases. 
 
 
 
