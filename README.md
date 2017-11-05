@@ -4,4 +4,4 @@ Evidence-based medicine (EBM) is an approach to medical practice intended to opt
 
 So, one of the most import step in EBM in **searching for evidence**. I,e. Finding the Biomedical Literature/articles to answer the clinical quentions. But, unfortunately this is not a simple straight forwards search. The following video summerizes the existing practice.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/_pVxRw-y8-M&t=172s/0.jpg)](https://www.youtube.com/watch?v=_pVxRw-y8-M&t=172s)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/_pVxRw-y8-M/hqdefault.jpg)](https://youtu.be/_pVxRw-y8-M?t=87)
